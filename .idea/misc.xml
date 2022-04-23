@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/bg_txt.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/colormix.xml" value="0.16666666666666666" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/gradi.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/gradi_2.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/gradiant2.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/gradiants.xml" value="0.16666666666666666" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.19166666666666668" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/ic_outline_search_24.xml" value="0.1085" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/ic_wave.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/ic_wave__2_.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/ic_wave_down.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/ic_wave_up_1.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/outline.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/transparent.xml" value="0.17395833333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/drawable/ui_summer.xml" value="0.1085" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/activity_categories.xml" value="0.17552083333333332" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/activity_dashboard.xml" value="0.16666666666666666" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/activity_main.xml" value="0.12" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/activity_main_profile.xml" value="0.1578125" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/activity_product_details.xml" value="0.1578125" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/activity_send_otp.xml" value="0.12" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/activity_sign_up.xml" value="0.12" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/activity_user_profile.xml" value="0.16666666666666666" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/offer_plan_row_ui.xml" value="0.17552083333333332" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/ui_ad.xml" value="0.1578125" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/ui_cat.xml" value="0.17552083333333332" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/ui_musttry.xml" value="0.3333333333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/ui_prod.xml" value="0.17552083333333332" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/ui_summer.xml" value="0.3333333333333333" />
+        <entry key="..\:/SpiDish/app/src/main/res/menu/bottom_menu.xml" value="0.17552083333333332" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1578125" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

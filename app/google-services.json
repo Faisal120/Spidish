@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "543905354457",
+    "project_id": "spidish-bacd6",
+    "storage_bucket": "spidish-bacd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543905354457:android:62f6112391379a999fe4c8",
+        "android_client_info": {
+          "package_name": "com.example.spidish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543905354457-5nqr2vjaddrj8u12k9fa5gnj5dqficjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoGFd51IGDX2CEwgzMn3K7bZ1c88Bc8gI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543905354457-5nqr2vjaddrj8u12k9fa5gnj5dqficjk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

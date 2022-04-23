@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/home"
+    android:icon="@drawable/ic_outline_home_24"
+    android:iconTint="@color/black"
+    android:title="Home"/>
+
+    <item android:title="Categories"
+        android:id="@+id/cat"
+        android:iconTint="@color/black"
+        android:icon="@drawable/ic_outline_category_24"/>
+
+    <item android:title="Search"
+        android:id="@+id/search"
+        android:iconTint="@color/black"
+        android:icon="@drawable/ic_outline_search_24"/>
+
+    <item
+        android:id="@+id/offer"
+        android:title="Offer"
+        android:iconTintMode="screen"
+        android:iconTint="@color/black"
+        android:icon="@drawable/ic_outline_local_offer_24"/>
+
+    <item android:title="Account"
+        android:iconTint="@color/black"
+        android:id="@+id/acc"
+        android:icon="@drawable/ic_round_person_outline_24"
+        />
+
+</menu>
