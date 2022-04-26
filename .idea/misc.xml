@@ -25,12 +25,17 @@
         <entry key="..\:/SpiDish/app/src/main/res/layout/activity_product_details.xml" value="0.1578125" />
         <entry key="..\:/SpiDish/app/src/main/res/layout/activity_send_otp.xml" value="0.12" />
         <entry key="..\:/SpiDish/app/src/main/res/layout/activity_sign_up.xml" value="0.12" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/activity_splash_screen.xml" value="0.1578125" />
         <entry key="..\:/SpiDish/app/src/main/res/layout/activity_user_profile.xml" value="0.16666666666666666" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/fragment_category.xml" value="0.1578125" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/fragment_home.xml" value="0.1578125" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/fragment_profile.xml" value="0.1578125" />
         <entry key="..\:/SpiDish/app/src/main/res/layout/offer_plan_row_ui.xml" value="0.17552083333333332" />
         <entry key="..\:/SpiDish/app/src/main/res/layout/ui_ad.xml" value="0.1578125" />
         <entry key="..\:/SpiDish/app/src/main/res/layout/ui_cat.xml" value="0.17552083333333332" />
         <entry key="..\:/SpiDish/app/src/main/res/layout/ui_musttry.xml" value="0.3333333333333333" />
         <entry key="..\:/SpiDish/app/src/main/res/layout/ui_prod.xml" value="0.17552083333333332" />
+        <entry key="..\:/SpiDish/app/src/main/res/layout/ui_setting.xml" value="0.1578125" />
         <entry key="..\:/SpiDish/app/src/main/res/layout/ui_summer.xml" value="0.3333333333333333" />
         <entry key="..\:/SpiDish/app/src/main/res/menu/bottom_menu.xml" value="0.17552083333333332" />
       </map>

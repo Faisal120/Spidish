@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     TextView txt_skip;
     ProgressBar btn_pb1;
     Random rand;
+    SQLiteDatabase db;
+    MyHelper ob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         rand = new Random();
+        ob=new MyHelper(getApplicationContext());
         txt_mob = findViewById(R.id.txt_mob);
         btn_sendotp = findViewById(R.id.btn_sendotp);
         btn_gmail = findViewById(R.id.btn_gmail);
@@ -87,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+
+                                    db = ob.getWritableDatabase();
+                                    db.execSQL("insert into login(Mobile,Status)values('" + Mobile + "','LogIn')");
+
                                     Intent inten=new Intent(getApplicationContext(),SendOtp.class);
                                     inten.putExtra("mobile",txt_mob.getText().toString());
                                     inten.putExtra("backendotp",backendotp);

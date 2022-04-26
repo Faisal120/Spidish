@@ -8,26 +8,14 @@ public class ModelMust {
     String quantity;
     String unit;
     int imgurl;
-    int bigimg;
 
-    public ModelMust() {
+    public ModelMust(String name, String description, String price, String quantity, String unit, int imgurl) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
         this.unit = unit;
         this.imgurl = imgurl;
-        this.bigimg = bigimg;
-    }
-
-
-
-    public int getBigimg(int b1) {
-        return bigimg;
-    }
-
-    public void setBigimg(int bigimg) {
-        this.bigimg = bigimg;
     }
 
     public String getName() {

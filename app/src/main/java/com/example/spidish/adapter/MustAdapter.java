@@ -29,10 +29,6 @@ public class MustAdapter extends RecyclerView.Adapter<MustAdapter.ViewHolder> {
 
     Context activity;
 
-    public MustAdapter(Context activity) {
-        this.activity = activity;
-    }
-
     ArrayList<ModelMust> mustlist;
 
     public MustAdapter(ArrayList<ModelMust> mustlist) {

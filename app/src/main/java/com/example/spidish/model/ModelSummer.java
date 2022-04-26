@@ -6,6 +6,13 @@ public class ModelSummer {
     String price;
     int img;
 
+    public ModelSummer(String name, String quantity, String price, int img) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.img = img;
+    }
+
     public Integer getImg() {
         return img;
     }

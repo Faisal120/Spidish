@@ -1,5 +1,6 @@
 package com.example.spidish;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,6 +19,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class User_Profile extends AppCompatActivity {
 
@@ -25,6 +34,8 @@ public class User_Profile extends AppCompatActivity {
     RadioButton rb_male,rb_female;
     Button btn_register;
     String mob="";
+    FirebaseAuth firebaseAuth;
+    FirebaseFirestore fstore;
 
 
     @Override
@@ -40,6 +51,13 @@ public class User_Profile extends AppCompatActivity {
         rb_male=findViewById(R.id.rb_male);
         rb_female=findViewById(R.id.rb_female);
         btn_register=findViewById(R.id.btn_register);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        fstore = FirebaseFirestore.getInstance();
+
+        String userID = firebaseAuth.getCurrentUser().getUid();
+
+        DocumentReference documentReference = fstore.collection("users").document(userID);
 
         mob=getIntent().getStringExtra("mobile");
         txt_mob.setText(mob);
@@ -82,29 +100,29 @@ public class User_Profile extends AppCompatActivity {
                 }
                 else
                 {
-                    StringRequest req=new StringRequest(Request.Method.POST, "https://nexes.info/Faisal/Spidish/spi_profile.php?m1=" + Mobile + "&m2=" + Name + "&m3=" + Email + "&m4=" + Address + "&m5=" + Pincode + "&m6=" + Gender, new Response.Listener<String>() {
+                    Map<String,Object> user = new HashMap<>();
+                    user.put("Mobile",Mobile);
+                    user.put("Name",Name);
+                    user.put("Email",Email);
+                    user.put("Address",Address);
+                    user.put("Pincode",Pincode);
+                    user.put("Gender",Gender);
+
+                    documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onResponse(String response) {
-                            if(response.equals("Profile Created"))
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful())
                             {
-                                Intent inten1=new Intent(getApplicationContext(),Dashboard.class);
-                                Toast.makeText(getApplicationContext(), "Profile Created", Toast.LENGTH_SHORT).show();
-                                startActivity(inten1);
+                                Intent intent = new Intent(getApplicationContext(),Dashboard.class);
+                                intent.putExtra("mobile",mob);
+                                startActivity(intent);
                                 finish();
                             }
-                            else {
-                                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                            else{
+                                Toast.makeText(getApplicationContext(), "Registration Failed", Toast.LENGTH_SHORT).show();
                             }
                         }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
                     });
-
-                    RequestQueue r1= Volley.newRequestQueue(getApplicationContext());
-                    r1.add(req);
                 }
             }
         });

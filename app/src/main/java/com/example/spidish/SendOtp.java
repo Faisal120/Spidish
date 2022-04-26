@@ -22,22 +22,29 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.provider.FirebaseInitProvider;
 
 import java.util.concurrent.TimeUnit;
 
 public class SendOtp extends AppCompatActivity {
-    EditText txt_otp1, txt_otp2, txt_otp3, txt_otp4, txt_otp5,txt_otp6;
+    EditText txt_otp1, txt_otp2, txt_otp3, txt_otp4, txt_otp5, txt_otp6;
     TextView txt_reotp, txt_txtview;
     Button btn_verifyotp;
     ProgressBar btn_pb2;
-    String Mobile="";
+    String Mobile = "";
     String getbackend;
+    FirebaseAuth fauth;
+    FirebaseFirestore fstore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +59,14 @@ public class SendOtp extends AppCompatActivity {
         txt_otp5 = findViewById(R.id.txt_otp5);
         txt_otp6 = findViewById(R.id.txt_otp6);
         txt_reotp = findViewById(R.id.txt_reotp);
-        btn_pb2   = findViewById(R.id.btn_pb2);
+        btn_pb2 = findViewById(R.id.btn_pb2);
         btn_verifyotp = findViewById(R.id.btn_verifyotp);
         txt_txtview = findViewById(R.id.txt_txtview);
 
-        Intent ob2= getIntent();
+        fauth = FirebaseAuth.getInstance();
+        fstore = FirebaseFirestore.getInstance();
+
+        Intent ob2 = getIntent();
         Mobile = ob2.getStringExtra("mobile");
 
         txt_txtview.setText(String.format(
@@ -72,12 +82,11 @@ public class SendOtp extends AppCompatActivity {
 
                 if (!txt_otp1.getText().toString().isEmpty() && !txt_otp2.getText().toString().isEmpty()
                         && !txt_otp3.getText().toString().isEmpty() && !txt_otp4.getText().toString().isEmpty()
-                        && !txt_otp5.getText().toString().isEmpty() && !txt_otp6.getText().toString().isEmpty())
-                {
+                        && !txt_otp5.getText().toString().isEmpty() && !txt_otp6.getText().toString().isEmpty()) {
                     String otp = txt_otp1.getText().toString() + txt_otp2.getText().toString().trim()
                             + txt_otp3.getText().toString() + txt_otp4.getText().toString().trim()
-                            + txt_otp5.getText().toString()+ txt_otp6.getText().toString().trim();
-                    if(getbackend!=null){
+                            + txt_otp5.getText().toString() + txt_otp6.getText().toString().trim();
+                    if (getbackend != null) {
                         btn_pb2.setVisibility(View.VISIBLE);
                         btn_verifyotp.setVisibility(View.INVISIBLE);
 
@@ -89,28 +98,38 @@ public class SendOtp extends AppCompatActivity {
                                         btn_pb2.setVisibility(View.GONE);
                                         btn_verifyotp.setVisibility(View.VISIBLE);
 
-                                        if(task.isSuccessful()){
-                                            Intent intent= new Intent(getApplicationContext(),User_Profile.class);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            intent.putExtra("mobile",Mobile);
-                                            startActivity(intent);
-                                        }else
-                                        {
+                                        if (task.isSuccessful()) {
+
+                                            DocumentReference docref = fstore.collection("users").document(fauth.getCurrentUser().getUid());
+                                            docref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                    if (documentSnapshot.exists()) {
+                                                        Intent cu = new Intent(getApplicationContext(), Dashboard.class);
+                                                        startActivity(cu);
+                                                        finish();
+                                                    } else {
+                                                        Intent eu = new Intent(getApplicationContext(), User_Profile.class);
+                                                        eu.putExtra("mobile",Mobile);
+                                                        startActivity(eu);
+                                                        finish();
+                                                    }
+                                                }
+                                            });
+                                        } else {
                                             Toast.makeText(getApplicationContext(), "Enter the correct OTP", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
 
-                    }else {
+                    } else {
                         Toast.makeText(getApplicationContext(), "Please check your internet connection!", Toast.LENGTH_SHORT).show();
                     }
 
                     Toast.makeText(getApplicationContext(), "OTP Verify", Toast.LENGTH_SHORT).show();
 
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Please enter 6 Digits OTP", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please enter 6 Digits OTP", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -200,8 +219,7 @@ public class SendOtp extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!txt_otp5.getText().toString().trim().isEmpty())
-                {
+                if (!txt_otp5.getText().toString().trim().isEmpty()) {
                     txt_otp6.requestFocus();
                 }
             }
